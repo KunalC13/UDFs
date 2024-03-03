@@ -1,0 +1,48 @@
+; read case file
+/file/read-case-dat withvents.cas
+
+/define/user-defined/compiled-functions compile "libudf" yes "Density_Kelvin_UDF.c" "Upper_piston.c" "lower_piston.c" "Viscosity_Improved_UDF.c" "" ""
+/define/user-defined/compiled-functions load "libudf"
+
+; read data file
+;rd withvents.dat
+
+;/define/user-defined/compiled-functions load "libudf/lnamd64/3ddp_host/libudf.so" ()
+;/file/write-case-data updated_withvents.cas
+;/file/read-case-dat updated_withvents.cas
+; define models
+;/define/models/unsteady-1st-order? yes
+
+;further model definition examples
+;/define/models/solver/density-based yes
+;/define/models/energy yes
+;/define/models/viscous/kw yes
+
+; autosave
+/file/auto-save/data-frequency 50 
+
+/file/auto-save/case-frequency each-time
+
+/file/auto-save/append-file-name-with time-step 50
+
+/file/auto-save/root-name "/home/h1/kuch472e/Withvents/withvents.cas"
+
+; transient controls
+/solve/set/transient-controls/time-step-size 0.00001
+
+/solve/set/transient-controls/max-iterations-per-time-step 30
+
+/solve/set/transient-controls/number-of-time-steps 50000
+
+; initialize solution - don't need for this case with data initialization file
+;/solve/initialize/hyb-initialization
+
+; write case and data
+wcd solidification
+
+; iterate 5000 steps, 50 max iterations per timestep
+/solve/dual-time-iterate 50000 30
+
+; exit fluent
+exit
+yes

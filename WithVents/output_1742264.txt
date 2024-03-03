@@ -1,0 +1,47 @@
+Module ANSYS/2023R1 loaded.
+/software/rapids/r23.10/ANSYS/2023R1/v231/fluent/fluent23.1.0/bin/fluent -r23.1.0 3ddp -g -t64 -i withvents.jou -ssh
+/software/rapids/r23.10/ANSYS/2023R1/v231/fluent/fluent23.1.0/cortex/lnamd64/cortex.23.1.0 -f fluent -g -i withvents.jou (fluent "3ddp -pshmem  -host -r23.1.0 -t64 -mpi=intel -path/software/rapids/r23.10/ANSYS/2023R1/v231/fluent -ssh")
+
+Opening input/output transcript to file "/home/h1/kuch472e/Withvents/fluent-20240105-124153-534009.trn".
+Auto-Transcript Start Time:  12:41:53, 05 Jan 2024 
+/software/rapids/r23.10/ANSYS/2023R1/v231/fluent/fluent23.1.0/bin/fluent -r23.1.0 3ddp -pshmem -host -t64 -mpi=intel -path/software/rapids/r23.10/ANSYS/2023R1/v231/fluent -ssh -cx n1395.barnard.hpc.tu-dresden.de:35835:36267
+Starting /software/rapids/r23.10/ANSYS/2023R1/v231/fluent/fluent23.1.0/lnamd64/3ddp_host/fluent.23.1.0 host -cx n1395.barnard.hpc.tu-dresden.de:35835:36267 "(list (rpsetvar (QUOTE parallel/function) "fluent 3ddp -flux -node -r23.1.0 -t64 -pshmem -mpi=intel -ssh") (rpsetvar (QUOTE parallel/rhost) "") (rpsetvar (QUOTE parallel/ruser) "") (rpsetvar (QUOTE parallel/nprocs_string) "64") (rpsetvar (QUOTE parallel/auto-spawn?) #t) (rpsetvar (QUOTE parallel/trace-level) 0) (rpsetvar (QUOTE parallel/remote-shell) 1) (rpsetvar (QUOTE parallel/path) "/software/rapids/r23.10/ANSYS/2023R1/v231/fluent") (rpsetvar (QUOTE parallel/hostsfile) "") (rpsetvar (QUOTE gpuapp/devices) ""))"
+
+              Welcome to ANSYS Fluent 2023 R1
+
+              Copyright 1987-2023 ANSYS, Inc. All Rights Reserved.
+              Unauthorized use, distribution or duplication is prohibited.
+              This product is subject to U.S. laws governing export and re-export.
+              For full Legal Notice, see documentation.
+
+Build Time: Nov 28 2022 09:30:46 EST  Build Id: 10208  
+ 
+Connected License Server List:	1259@licenses.zih.tu-dresden.de
+
+     --------------------------------------------------------------
+     This is an academic version of ANSYS FLUENT. Usage of this product
+     license is limited to the terms and conditions specified in your ANSYS
+     license form, additional terms section.
+     --------------------------------------------------------------
+Host spawning Node 0 on machine "n1395" (unix).
+/software/rapids/r23.10/ANSYS/2023R1/v231/fluent/fluent23.1.0/bin/fluent -r23.1.0 3ddp -flux -node -t64 -pshmem -mpi=intel -ssh -mport 172.24.65.149:172.24.65.149:36181:0
+Starting /software/rapids/r23.10/ANSYS/2023R1/v231/fluent/fluent23.1.0/multiport/mpi/lnamd64/intel2021/bin/mpirun --rsh=ssh -f /tmp/fluent-appfile.kuch472e.534366 -genv FI_PROVIDER tcp -genv FLUENT_ARCH lnamd64 -genv I_MPI_DEBUG 0 -genv I_MPI_ADJUST_REDUCE 2 -genv I_MPI_ADJUST_ALLREDUCE 2 -genv I_MPI_ADJUST_BCAST 8 -genv I_MPI_ADJUST_BARRIER 2 -genv I_MPI_ADJUST_ALLGATHER 2 -genv I_MPI_ADJUST_GATHER 2 -genv I_MPI_ADJUST_ALLTOALL 1 -genv I_MPI_ADJUST_SCATTER 2 -genv I_MPI_ADJUST_SCATTERV 2 -genv I_MPI_ADJUST_ALLGATHERV 2 -genv I_MPI_ADJUST_GATHERV 2 -genv I_MPI_PLATFORM auto -genv PYTHONHOME /software/rapids/r23.10/ANSYS/2023R1/v231/fluent/fluent23.1.0/../../commonfiles/CPython/3_7/linx64/Release/python -genv FLUENT_PROD_DIR /software/rapids/r23.10/ANSYS/2023R1/v231/fluent/fluent23.1.0 -genv FLUENT_AFFINITY 0 -genv I_MPI_PIN enable -genv KMP_AFFINITY disabled -n 64 /software/rapids/r23.10/ANSYS/2023R1/v231/fluent/fluent23.1.0/lnamd64/3ddp_node/fluent_mpi.23.1.0 node -mpiw intel -pic shmem -mport 172.24.65.149:172.24.65.149:36181:0
+[mpiexec@n1395] wait_proxies_to_terminate (../../../../../src/pm/i_hydra/mpiexec/intel/i_mpiexec.c:541): downstream from host n1395 was killed by signal 11 (Segmentation fault)
+[mpiexec@n1395] main (../../../../../src/pm/i_hydra/mpiexec/mpiexec.c:2125): assert (pg->intel.exitcodes != NULL) failed
+[mpiexec@n1395] HYD_sock_write (../../../../../src/pm/i_hydra/libhydra/sock/hydra_sock_intel.c:360): write error (Bad file descriptor)
+
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+   Timed out in Fluent startup [600 seconds], aborting ... 
+
+   Check networks and computers to make sure they are available and healthy! 
+   If you believe the systems are good, you can wait longer by setting 
+     the environment variable in seconds as needed: 
+
+       FLUENT_START_COMPUTE_NODE_TIME_OUT 
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+
+
+Application is timed out, aborting ...
+
+/software/rapids/r23.10/ANSYS/2023R1/v231/fluent/fluent23.1.0/bin/fluent: line 2915: 534009 Aborted                 (core dumped) $NO_RUN $CORTEX_PRE $EXE -f $FLUENT_PROD $CX_FLAGS "$CX_FUNCTION"

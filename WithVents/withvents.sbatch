@@ -1,0 +1,33 @@
+#SBATCH -J ansys_withvents
+#SBATCH -J ansys_withvents.o%j
+#
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=24
+#SBATCH --time=120:00:00
+#SBATCH --partition=batch
+
+#SBATCH --mail-user=kunal.chopra@mailbox.tu-dresden.de
+### #SBATCH --mail-type=begin
+#SBATCH --mail-type=end
+
+InputFile=withventst.commands
+
+module load ANSYS
+
+NPROCS='echo $SLURM_NTASKS'
+NNODES='echo $SLURM_JOB_NUM_NODES'
+
+
+echo Running on host 'barnard'
+echo Using ${NPROCS} processors across ${NNODES} nodes
+
+procs_per_host=1
+
+for host in 'srun hostname | out -d "." -f 1"; do
+	if ["$h1" = ""]
+	then h1 = "${host}-ib0:${procs_per_host}"
+	else h1 = "${h1}-ib0:${procs_per_host}"
+	fi
+done
+
+fluent 3ddp -g -t ${SLURM_NTASKS} -i withvents.jou
